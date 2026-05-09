@@ -15,7 +15,7 @@
 # ─────────────────────────────────────────────────────────────────────────────
 
 # ─── Stage 1: builder ────────────────────────────────────────────────────────
-FROM rust:1.83-bookworm AS builder
+FROM rust:latest as builder
 
 ENV DEBIAN_FRONTEND=noninteractive
 ENV NODE_MAJOR=20
