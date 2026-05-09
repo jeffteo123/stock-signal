@@ -1,0 +1,32 @@
+[package]
+name    = "stock-signal"
+version = "0.1.0"
+edition = "2021"
+
+[lib]
+name       = "stock_signal_lib"
+crate-type = ["staticlib", "cdylib", "rlib"]
+
+[[bin]]
+name = "stock-signal"
+path = "src/main.rs"
+
+[dependencies]
+tauri              = { version = "2.0", features = [] }
+tauri-plugin-shell = "2.0"
+tokio              = { version = "1", features = ["full"] }
+reqwest            = { version = "0.12", features = ["json"] }
+rdkafka            = { version = "0.36", features = ["cmake-build"] }
+neo4rs             = "0.8"
+serde              = { version = "1", features = ["derive"] }
+serde_json         = "1"
+uuid               = { version = "1", features = ["v4"] }
+anyhow             = "1"
+tracing            = "0.1"
+tracing-subscriber = { version = "0.3", features = ["env-filter"] }
+
+[profile.release]
+panic         = "abort"
+codegen-units = 1
+lto           = true
+opt-level     = 3
